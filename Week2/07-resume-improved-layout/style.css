@@ -1,0 +1,172 @@
+/* ============================================
+   Week 2 · Task 7 — Improved layout
+   Focus: spacing, borders, and alignment via margin/padding
+   ============================================ */
+
+:root {
+  --navy: #0B1E33;
+  --paper: #F4F6F8;
+  --ink: #101820;
+  --accent: #FF6B35;
+  --slate: #52606D;
+  --line: #D8DEE4;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  padding: 2.5rem 1.25rem;
+}
+
+/* ---- Sheet frame: this is where alignment/border/spacing decisions live ---- */
+.resume-sheet {
+  max-width: 980px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  box-shadow: 0 2px 10px rgba(11, 30, 51, 0.06);
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  background: var(--navy);
+  color: var(--paper);
+  padding: 2.5rem 1.75rem;
+  border-right: 4px solid var(--accent);
+}
+.sidebar .avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  display: block; margin: 0 auto 1.1rem;
+  border: 2px solid var(--accent);
+}
+.sidebar h1 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+.sidebar .role {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-align: center;
+  color: #AEC3D6;
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.sidebar-block { margin-bottom: 2rem; }
+.sidebar-block h2 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.contact-list { list-style: none; }
+.contact-list li {
+  display: flex; flex-direction: column;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
+  font-size: 0.85rem;
+}
+.contact-list li:last-child { border-bottom: none; }
+.contact-list span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #7E97AF;
+  margin-bottom: 0.15rem;
+}
+.contact-list a { color: var(--paper); text-decoration: none; }
+.contact-list a:hover { color: var(--accent); }
+
+.skills-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skills-list li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+}
+
+.edu-item { padding: 0.6rem 0; border-bottom: 1px dashed rgba(255,255,255,0.12); }
+.edu-item:last-child { border-bottom: none; }
+.edu-degree { font-size: 0.86rem; font-weight: 600; margin-bottom: 0.15rem; }
+.edu-meta { font-family: var(--font-mono); font-size: 0.72rem; color: #AEC3D6; }
+
+/* ---- Main content ---- */
+.content { padding: 2.6rem 2.4rem; }
+.content section { margin-bottom: 2.4rem; padding-bottom: 2.4rem; border-bottom: 1px solid var(--line); }
+.content section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.content h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin-bottom: 1.1rem;
+  padding-left: 0.85rem;
+  border-left: 4px solid var(--accent);
+}
+.content p { max-width: 66ch; color: var(--slate); }
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 0.7rem 0;
+}
+.timeline-marker {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); margin-top: 0.4rem; flex-shrink: 0;
+}
+.timeline-title { font-weight: 600; font-size: 0.95rem; }
+.timeline-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--slate); margin-top: 0.15rem; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.project-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+}
+.project-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.project-card p { font-size: 0.87rem; }
+
+.site-footer {
+  text-align: center;
+  padding: 1.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--slate);
+}
+
+@media (max-width: 720px) {
+  .resume-sheet { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 4px solid var(--accent); }
+}

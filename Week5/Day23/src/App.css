@@ -1,0 +1,153 @@
+/* ==========================================================================
+   Stage — the desk the instrument sits on
+   ========================================================================== */
+
+.stage {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 5vw, 64px);
+  overflow: hidden;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--line) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+  transition: background var(--transition-theme);
+}
+
+.stage__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(var(--shadow-color), 0.05),
+    transparent 55%
+  );
+}
+
+/* ==========================================================================
+   Plate — the physical body of the instrument
+   ========================================================================== */
+
+.plate {
+  position: relative;
+  width: min(560px, 100%);
+  background: linear-gradient(
+    165deg,
+    var(--panel-surface-raised) 0%,
+    var(--panel-surface) 62%
+  );
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 4vw, 44px) clamp(24px, 4.5vw, 40px) 28px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 30px 60px -25px rgba(var(--shadow-color), 0.45),
+    0 10px 24px -12px rgba(var(--shadow-color), 0.3);
+  transition: background var(--transition-theme), border-color var(--transition-theme),
+    box-shadow var(--transition-theme);
+}
+
+[data-theme="night"] .plate {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03) inset,
+    0 40px 80px -30px rgba(0, 0, 0, 0.7),
+    0 12px 30px -14px rgba(0, 0, 0, 0.6);
+}
+
+.plate__rivet {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    var(--panel-surface-raised),
+    var(--line-strong) 70%
+  );
+  box-shadow: 0 1px 2px rgba(var(--shadow-color), 0.4);
+}
+
+.plate__rivet--tl { top: 14px; left: 14px; }
+.plate__rivet--tr { top: 14px; right: 14px; }
+.plate__rivet--bl { bottom: 14px; left: 14px; }
+.plate__rivet--br { bottom: 14px; right: 14px; }
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.plate__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.plate__heading {
+  min-width: 0;
+}
+
+.plate__eyebrow {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.plate__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 5vw, 38px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.plate__subtitle {
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 34ch;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.plate__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line-strong);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.plate__footer-divider {
+  color: var(--line-strong);
+}
+
+@media (max-width: 480px) {
+  .plate__header {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Navbar &amp; Cards — Hamdan Ali</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Hamdan<span>.dev</span></a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#top">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" id="top">
+      <p class="eyebrow">Week 2 — Task 9 · Responsive Navbar &amp; Flexbox Cards</p>
+      <h1>Selected Projects</h1>
+      <p>A responsive card grid built entirely with Flexbox — resize the window or view on mobile to see the navbar collapse and the cards reflow.</p>
+    </section>
+
+    <section class="card-section" id="projects">
+      <article class="proj-card">
+        <div class="proj-tag">FYP</div>
+        <h3>Karigaar</h3>
+        <p>On‑demand home services marketplace for Pakistan, with escrow payments, CNIC verification, and rule‑based worker matching.</p>
+        <div class="proj-stack">
+          <span>React Native</span><span>Node.js</span><span>MySQL</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-tag">AI</div>
+        <h3>Jarvis AI Assistant</h3>
+        <p>A Python voice assistant with speech recognition, text‑to‑speech output, and custom command handling.</p>
+        <div class="proj-stack">
+          <span>Python</span><span>SpeechRecognition</span><span>pyttsx3</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-tag">Web</div>
+        <h3>CRM Web Application</h3>
+        <p>A modular, full‑stack‑style React interface for managing customer records and relationships.</p>
+        <div class="proj-stack">
+          <span>React</span><span>Component State</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-tag">Database</div>
+        <h3>Hospital Database</h3>
+        <p>A normalized MySQL schema for managing patient and staff records efficiently.</p>
+        <div class="proj-stack">
+          <span>MySQL</span><span>Normalization</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-tag">Game</div>
+        <h3>Space Shooter</h3>
+        <p>A 2D arcade‑style shooter game built in C++ using the SFML graphics library.</p>
+        <div class="proj-stack">
+          <span>C++</span><span>SFML</span><span>OOP</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-tag">Web</div>
+        <h3>Service Booking App</h3>
+        <p>An interactive React application implementing component‑based UI with dynamic state for booking flows.</p>
+        <div class="proj-stack">
+          <span>React</span><span>Hooks</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    Hamdan Ali · hamdanaly651@gmail.com · Islamabad, Pakistan
+  </footer>
+
+</body>
+</html>

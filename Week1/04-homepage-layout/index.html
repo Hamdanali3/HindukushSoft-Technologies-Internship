@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — Hamdan Ali</title>
+  <style>
+    :root {
+      --navy: #0B1E33; --paper: #F4F6F8; --ink: #101820;
+      --accent: #FF6B35; --slate: #52606D; --line: #D8DEE4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Trebuchet MS', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+
+    header {
+      background: var(--navy);
+      color: var(--paper);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+    .brand { font-weight: bold; font-size: 1.1rem; letter-spacing: 0.02em; }
+    .brand span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 1.6rem; }
+    nav a { color: var(--paper); text-decoration: none; font-size: 0.92rem; opacity: 0.85; transition: opacity 0.15s ease; }
+    nav a:hover, nav a:focus-visible { opacity: 1; color: var(--accent); }
+
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+    .eyebrow { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 0.9rem; }
+    .hero p { max-width: 56ch; margin: 0 auto 1.8rem; color: var(--slate); font-size: 1.05rem; }
+    .cta { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: 5px; font-size: 0.95rem; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    section { margin-bottom: 3.2rem; }
+    section > h2 {
+      font-size: 1.5rem; margin-bottom: 1.4rem; padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--navy); display: inline-block;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+    article {
+      background: #fff; border: 1px solid var(--line); border-radius: 8px;
+      padding: 1.4rem; box-shadow: 0 1px 3px rgba(11,30,51,0.06);
+    }
+    article h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+    article p { font-size: 0.92rem; color: var(--slate); }
+
+    aside {
+      background: var(--navy); color: var(--paper);
+      border-radius: 8px; padding: 1.6rem;
+    }
+    aside h2 { border: none; }
+    aside p { color: #AEC3D6; font-size: 0.92rem; }
+
+    footer { background: var(--navy); color: #AEC3D6; text-align: center; padding: 1.8rem 1.5rem; font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-inner">
+      <div class="brand">Hamdan<span>.dev</span></div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <p class="eyebrow">Week 1 — Day 4 · Semantic Homepage Layout</p>
+      <h1>Hamdan Ali</h1>
+      <p>Software Engineering student building full‑stack web apps, AI‑driven tools, and clean, dependable interfaces — currently sharpening my front‑end fundamentals one task at a time.</p>
+      <a class="cta" href="#work">See my work</a>
+    </section>
+
+    <section id="work">
+      <h2>Featured Work</h2>
+      <div class="grid">
+        <article>
+          <h3>Karigaar</h3>
+          <p>On‑demand home services marketplace for Pakistan — my Final Year Project, built as team lead.</p>
+        </article>
+        <article>
+          <h3>Jarvis AI Assistant</h3>
+          <p>A Python voice assistant with speech recognition, text‑to‑speech, and command handling.</p>
+        </article>
+        <article>
+          <h3>CRM Web Application</h3>
+          <p>A modular React interface for managing customer records, built as a term project.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <aside>
+        <h2>Currently</h2>
+        <p>Leading the IEEE Computer Society chapter launch at Air University, and working through a full‑stack internship — this page is one of that internship's Week 1 deliverables.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>Hamdan Ali · <a href="mailto:hamdanaly651@gmail.com">hamdanaly651@gmail.com</a> · Islamabad, Pakistan</p>
+  </footer>
+
+</body>
+</html>

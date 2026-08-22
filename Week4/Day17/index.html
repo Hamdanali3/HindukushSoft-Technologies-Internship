@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Panel — Hamdan Ali</title>
+<meta name="description" content="Buttons that change color and text on click — a reaction bar and a hands-on look at onclick vs addEventListener.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+    <header class="page-head">
+      <p class="eyebrow">Week 4 — Day 17 · DOM Events</p>
+      <h1>Signal Panel</h1>
+      <p class="sub">Every button here reacts to a click — text, color, or both. Scroll down for exactly how each one is wired.</p>
+    </header>
+
+    <!-- ===================== Reaction Bar ===================== -->
+    <section class="panel-block">
+      <p class="panel-eyebrow">01 · Reaction Bar</p>
+      <h2 class="panel-title">Was this internship writeup helpful?</h2>
+      <p class="panel-desc">A reaction bar like the ones on GitHub issues or documentation pages — click to react, click again to undo.</p>
+
+      <div id="reaction-bar" class="reaction-bar">
+        <button type="button" class="reaction" data-reaction="thumbsup" data-glow="#3DDC84">
+          <span class="reaction-emoji">👍</span>
+          <span class="reaction-count" data-count="thumbsup">0</span>
+        </button>
+        <button type="button" class="reaction" data-reaction="thumbsdown" data-glow="#8B93A1">
+          <span class="reaction-emoji">👎</span>
+          <span class="reaction-count" data-count="thumbsdown">0</span>
+        </button>
+        <button type="button" class="reaction" data-reaction="heart" data-glow="#FF5C8A">
+          <span class="reaction-emoji">❤️</span>
+          <span class="reaction-count" data-count="heart">0</span>
+        </button>
+        <button type="button" class="reaction" data-reaction="tada" data-glow="#B084F2">
+          <span class="reaction-emoji">🎉</span>
+          <span class="reaction-count" data-count="tada">0</span>
+        </button>
+        <button type="button" class="reaction" data-reaction="smile" data-glow="#FFC542">
+          <span class="reaction-emoji">😄</span>
+          <span class="reaction-count" data-count="smile">0</span>
+        </button>
+        <button type="button" class="reaction" data-reaction="confused" data-glow="#FF6B35">
+          <span class="reaction-emoji">😕</span>
+          <span class="reaction-count" data-count="confused">0</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================== Button Lab ===================== -->
+    <section class="panel-block">
+      <p class="panel-eyebrow">02 · Button Lab</p>
+      <h2 class="panel-title">Five ways a click gets handled</h2>
+      <p class="panel-desc">Each button below isolates one specific event-handling technique.</p>
+
+      <div class="lab-grid">
+
+        <div class="lab-card">
+          <h3>Color Cycle</h3>
+          <p>Uses the <code>.onclick</code> property — a single handler assigned directly to the element.</p>
+          <button type="button" id="onclick-demo-btn" class="lab-btn">Click to cycle color</button>
+        </div>
+
+        <div class="lab-card">
+          <h3>Stacked Listeners</h3>
+          <p>Two separate <code>addEventListener</code> calls on the same button — both run from one click.</p>
+          <button type="button" id="stacked-btn" class="lab-btn">Click me twice-over</button>
+          <p class="lab-meta">Fired count: <span id="stacked-count">0</span></p>
+        </div>
+
+        <div class="lab-card">
+          <h3>Event Inspector</h3>
+          <p>Reads the actual <code>event</code> object passed into the handler.</p>
+          <button type="button" id="inspector-btn" class="lab-btn">Click and inspect</button>
+          <p class="lab-meta" id="inspector-output">No clicks yet.</p>
+        </div>
+
+        <div class="lab-card">
+          <h3>One-Time Button</h3>
+          <p>Registered with <code>{ once: true }</code> — the listener removes itself after firing.</p>
+          <button type="button" id="once-btn" class="lab-btn">Use me once</button>
+        </div>
+
+        <div class="lab-card">
+          <h3>Status Toggle</h3>
+          <p>The purest version of the task: one click, new color, new text.</p>
+          <button type="button" id="toggle-btn" class="lab-btn lab-btn--off">Notifications Off</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== Event console ===================== -->
+    <section class="console-panel" aria-label="Event activity log">
+      <p class="console-title">Event Console</p>
+      <ul id="console-list" class="console-list"></ul>
+    </section>
+
+    <section class="info-card">
+      <h2>How it's built</h2>
+      <p>
+        Every reaction and every lab button is wired up once, when the
+        page loads — no handler is created or attached inside a loop
+        that runs on every click. The Reaction Bar uses
+        <code>addEventListener</code> exclusively, since it needs to
+        support being clicked any number of times. The Button Lab
+        deliberately spreads across different techniques — the
+        <code>.onclick</code> property, multiple stacked listeners, the
+        event object, and a self-removing listener — so each one is
+        demonstrated on its own rather than blended together.
+      </p>
+    </section>
+
+    <footer class="page-foot">Hamdan Ali · Week 4, Day 17 — Full Stack Web Development Internship</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

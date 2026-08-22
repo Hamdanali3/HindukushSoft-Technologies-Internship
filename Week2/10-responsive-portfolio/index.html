@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamdan Ali — Portfolio</title>
+  <meta name="description" content="Portfolio and resume of Hamdan Ali, Software Engineering student at Air University Islamabad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Hamdan<span>.dev</span></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <p class="eyebrow">Week 2 — Task 10 · Final Responsive Portfolio</p>
+        <h1>Hamdan Ali</h1>
+        <p class="hero-role">Software Engineering Student · Full‑Stack &amp; AI</p>
+        <p class="hero-desc">
+          I build practical, well‑structured software — from AI‑driven tools and
+          databases to responsive React interfaces. Currently leading the FYP
+          <strong>Karigaar</strong>, an on‑demand home services marketplace for Pakistan.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="Hamdan.jpg" alt="Monogram avatar with the initials H A on a navy blueprint-grid background">
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm a sixth‑semester Software Engineering student at Air University,
+        Islamabad, with hands‑on experience in C++, Python, and core computer
+        science fundamentals — OOP, data structures, and algorithms. I've built
+        AI‑based and database‑focused projects, including a voice assistant,
+        management systems, and small games, alongside solid web development
+        experience with React, HTML, and CSS. I enjoy building practical, easy‑to‑use
+        software and working with others to solve problems effectively.
+      </p>
+    </section>
+
+    <section class="skills" id="skills">
+      <h2>Skills</h2>
+      <div class="skills-groups">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="chip-row"><span>C++</span><span>Python</span><span>JavaScript</span><span>Java</span><span>HTML / CSS</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>AI &amp; Search</h3>
+          <div class="chip-row"><span>BFS</span><span>DFS</span><span>A*</span><span>Min‑Max</span><span>Genetic Algorithms</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <div class="chip-row"><span>MySQL</span><span>VS Code</span><span>Figma</span><span>Cisco Packet Tracer</span><span>Git</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="education" id="education">
+      <h2>Education</h2>
+      <div class="edu-row">
+        <div class="edu-card">
+          <p class="edu-years">2022 – Present</p>
+          <h3>BS Software Engineering</h3>
+          <p class="edu-school">Air University, Islamabad · CGPA 3.51</p>
+        </div>
+        <div class="edu-card">
+          <p class="edu-years">2019 – 2021</p>
+          <h3>FSc Pre‑Engineering</h3>
+          <p class="edu-school">Govt. Degree College Chitral · 81%</p>
+        </div>
+        <div class="edu-card">
+          <p class="edu-years">2017 – 2019</p>
+          <h3>Matric (Science)</h3>
+          <p class="edu-school">FC Public School Drosh · 84%</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-section" id="projects">
+      <h2>Projects</h2>
+      <div class="cards">
+        <article class="proj-card">
+          <div class="proj-tag">FYP</div>
+          <h3>Karigaar</h3>
+          <p>On‑demand home services marketplace for Pakistan, with escrow payments, CNIC verification, and rule‑based worker matching.</p>
+          <div class="proj-stack"><span>React Native</span><span>Node.js</span><span>MySQL</span></div>
+        </article>
+        <article class="proj-card">
+          <div class="proj-tag">AI</div>
+          <h3>Jarvis AI Assistant</h3>
+          <p>A Python voice assistant with speech recognition, text‑to‑speech output, and custom command handling.</p>
+          <div class="proj-stack"><span>Python</span><span>Speech Recognition</span></div>
+        </article>
+        <article class="proj-card">
+          <div class="proj-tag">Web</div>
+          <h3>CRM Web Application</h3>
+          <p>A modular, full‑stack‑style React interface for managing customer records and relationships.</p>
+          <div class="proj-stack"><span>React</span><span>Component State</span></div>
+        </article>
+        <article class="proj-card">
+          <div class="proj-tag">Database</div>
+          <h3>Hospital Database</h3>
+          <p>A normalized MySQL schema for managing patient and staff records efficiently.</p>
+          <div class="proj-stack"><span>MySQL</span><span>Normalization</span></div>
+        </article>
+        <article class="proj-card">
+          <div class="proj-tag">Game</div>
+          <h3>Space Shooter</h3>
+          <p>A 2D arcade‑style shooter game built in C++ using the SFML graphics library.</p>
+          <div class="proj-stack"><span>C++</span><span>SFML</span><span>OOP</span></div>
+        </article>
+        <article class="proj-card">
+          <div class="proj-tag">Web</div>
+          <h3>Service Booking App</h3>
+          <p>An interactive React application implementing component‑based UI with dynamic state for booking flows.</p>
+          <div class="proj-stack"><span>React</span><span>Hooks</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Get In Touch</h2>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <p>Open to internship and collaboration opportunities in full‑stack development and applied AI.</p>
+          <ul>
+            <li><span>Email</span><a href="mailto:hamdanaly651@gmail.com">hamdanaly651@gmail.com</a></li>
+            <li><span>Phone</span><a href="tel:+923458162409">(+92) 345‑8162409</a></li>
+            <li><span>LinkedIn</span><a href="https://linkedin.com/in/hamdan-alii" target="_blank" rel="noopener">linkedin.com/in/hamdan-alii</a></li>
+            <li><span>Location</span><a>Islamabad, Pakistan</a></li>
+          </ul>
+        </div>
+        <form class="contact-form" action="#" method="post">
+          <div class="field">
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Hamdan Ali · Built for Week 2, Task 10 — Full Stack Web Development Internship</p>
+  </footer>
+
+</body>
+</html>

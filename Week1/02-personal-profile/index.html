@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Profile — Hamdan Ali</title>
+  <style>
+    :root {
+      --navy: #0B1E33; --paper: #F4F6F8; --ink: #101820;
+      --accent: #FF6B35; --slate: #52606D; --line: #D8DEE4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+    .eyebrow { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-align: center; padding-top: 2rem; }
+
+    .profile-hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      max-width: 900px;
+      margin: 1rem auto 2rem;
+      padding: 2rem 1.5rem;
+    }
+    .profile-hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--navy);
+      box-shadow: 0 0 0 6px var(--paper), 0 0 0 7px var(--line);
+    }
+    .profile-hero h1 { font-size: 2.2rem; margin-bottom: 0.4rem; }
+    .profile-hero .title { font-family: 'Courier New', monospace; color: var(--slate); font-size: 0.95rem; }
+
+    main { max-width: 760px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    h2 {
+      font-size: 1.4rem; margin-top: 2.4rem; margin-bottom: 0.9rem;
+      padding-bottom: 0.4rem; border-bottom: 2px solid var(--navy); display: inline-block;
+    }
+    p { margin-bottom: 1rem; max-width: 65ch; }
+
+    ul.about-list { list-style: none; padding: 0; margin: 0.5rem 0 1rem; }
+    ul.about-list li {
+      padding: 0.55rem 0 0.55rem 1.4rem;
+      border-bottom: 1px dashed var(--line);
+      position: relative;
+    }
+    ul.about-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 1rem; }
+    .chip {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      background: var(--navy);
+      color: var(--paper);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+    }
+
+    .social-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
+    .social-links a {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+      padding: 0.55rem 1.1rem;
+      border-radius: 4px;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .social-links a:hover { background: var(--navy); color: var(--paper); }
+    .social-links a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    footer { text-align: center; padding: 1.5rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--slate); border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+
+  <p class="eyebrow">Week 1 — Day 2 · Personal Profile Page</p>
+
+  <section class="profile-hero">
+    <img src="Hamdan.jpg" alt="Monogram avatar with the initials H A on a navy blueprint-grid background">
+    <div>
+      <h1>Hamdan Ali</h1>
+      <p class="title">Software Engineering Student · Islamabad, Pakistan</p>
+    </div>
+  </section>
+
+  <main>
+    <h2>About Me</h2>
+    <p>
+      I'm a sixth‑semester Software Engineering student at Air University, Islamabad,
+      building experience across full‑stack web development, AI search algorithms, and
+      database‑driven systems. Outside of coursework, I lead an IEEE Computer Society
+      chapter and have a long background in community and youth leadership.
+    </p>
+    <ul class="about-list">
+      <li>Founding a new IEEE Computer Society chapter at Air University, serving as President.</li>
+      <li>Started as a Boy Scout troop leader from a young age — my first real experience organizing people around a goal.</li>
+      <li>Active member of the Youth General Assembly, engaging in youth‑led policy and civic events.</li>
+      <li>Comfortable working across the stack, from C++ algorithms to responsive React interfaces.</li>
+    </ul>
+
+    <h2>Hobbies &amp; Interests</h2>
+    <ul class="about-list">
+      <li>Exploring UI/UX trends — glassmorphism, Bento‑grid layouts, and interface design systems.</li>
+      <li>Community organizing and mentoring, carried over from years of Scout leadership.</li>
+      <li>Reading about emerging AI tooling and experimenting with small side projects.</li>
+      <li>Following Pakistani streetwear and cultural design work.</li>
+    </ul>
+
+    <h2>Favorite Foods</h2>
+    <div class="chip-row">
+      <span class="chip">Karahi</span>
+      <span class="chip">Biryani</span>
+      <span class="chip">Chapli Kebab</span>
+      <span class="chip">Fresh Naan</span>
+      <span class="chip">Kahwa</span>
+    </div>
+
+    <h2>Find Me Online</h2>
+    <nav class="social-links" aria-label="Social profiles">
+      <a href="https://linkedin.com/in/hamdan-alii" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:hamdanaly651@gmail.com">Email ↗</a>
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </main>
+
+  <footer>Hamdan Ali · hamdanaly651@gmail.com · (+92) 345‑8162409</footer>
+
+</body>
+</html>

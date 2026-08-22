@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator — Hamdan Ali</title>
+<meta name="description" content="A precision-instrument-styled calculator built with vanilla HTML, CSS, and JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="page-head">
+      <p class="eyebrow">Week 3 — Day 15 · JS Fundamentals Combined</p>
+      <h1>Calculator</h1>
+      <p class="sub">A four-function calculator with memory, history, and full keyboard support.</p>
+    </header>
+
+    <main class="calc-shell">
+
+      <!-- ===================== Calculator ===================== -->
+      <div class="calculator" role="group" aria-label="Calculator">
+
+        <div class="calc-topbar">
+          <span class="brand-mark">CALC&thinsp;/&thinsp;01</span>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+            <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          </button>
+        </div>
+
+        <div class="screen" aria-live="polite">
+          <div class="screen-row">
+            <span id="memory-indicator" class="memory-indicator" hidden>M</span>
+            <span id="expression" class="expression"></span>
+          </div>
+          <div id="display" class="display">0</div>
+        </div>
+
+        <div class="keypad">
+          <button type="button" class="key key--fn" data-action="all-clear">AC</button>
+          <button type="button" class="key key--fn" data-action="clear-entry">C</button>
+          <button type="button" class="key key--fn" data-action="percent">%</button>
+          <button type="button" class="key key--op" data-operator="÷" aria-label="Divide">÷</button>
+
+          <button type="button" class="key key--num" data-digit="7">7</button>
+          <button type="button" class="key key--num" data-digit="8">8</button>
+          <button type="button" class="key key--num" data-digit="9">9</button>
+          <button type="button" class="key key--op" data-operator="×" aria-label="Multiply">×</button>
+
+          <button type="button" class="key key--num" data-digit="4">4</button>
+          <button type="button" class="key key--num" data-digit="5">5</button>
+          <button type="button" class="key key--num" data-digit="6">6</button>
+          <button type="button" class="key key--op" data-operator="-" aria-label="Subtract">&minus;</button>
+
+          <button type="button" class="key key--num" data-digit="1">1</button>
+          <button type="button" class="key key--num" data-digit="2">2</button>
+          <button type="button" class="key key--num" data-digit="3">3</button>
+          <button type="button" class="key key--op" data-operator="+" aria-label="Add">+</button>
+
+          <button type="button" class="key key--fn" data-action="sign" aria-label="Toggle sign">&plusmn;</button>
+          <button type="button" class="key key--num" data-digit="0">0</button>
+          <button type="button" class="key key--fn" data-action="decimal" aria-label="Decimal point">.</button>
+          <button type="button" class="key key--eq" data-action="equals" aria-label="Equals">=</button>
+        </div>
+
+        <div class="memory-row">
+          <button type="button" class="key key--mem" data-memory="mc">MC</button>
+          <button type="button" class="key key--mem" data-memory="mr">MR</button>
+          <button type="button" class="key key--mem" data-memory="m-minus">M&minus;</button>
+          <button type="button" class="key key--mem" data-memory="m-plus">M+</button>
+          <button type="button" class="key key--mem key--backspace" data-action="backspace" aria-label="Backspace">&larr;</button>
+        </div>
+      </div>
+
+      <!-- ===================== History panel ===================== -->
+      <aside class="history-panel" aria-label="Calculation history">
+        <p class="history-title">History</p>
+        <ul id="history-list" class="history-list"></ul>
+        <p class="history-hint">Tap any past result to load it back in.</p>
+      </aside>
+
+    </main>
+
+    <section class="info-card">
+      <h2>How it's built</h2>
+      <p>
+        The math lives in a separate <code>CalcEngine</code> object with no
+        knowledge of the page at all — it just takes numbers and an operator
+        and returns a result (or <code>null</code> on a divide-by-zero, which
+        the interface turns into a friendly "Error" instead of letting the
+        app break). A separate UI layer reads button presses and keystrokes
+        and feeds them to the engine.
+      </p>
+    </section>
+
+    <footer class="page-foot">Hamdan Ali · Week 3, Day 15 — Full Stack Web Development Internship</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

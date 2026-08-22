@@ -1,0 +1,135 @@
+/* ============================================
+   Week 2 · Task 8 — Header / Sidebar / Content layout
+   Focus: display and positioning properties
+   ============================================ */
+
+:root {
+  --navy: #0B1E33;
+  --paper: #F4F6F8;
+  --ink: #101820;
+  --accent: #FF6B35;
+  --slate: #52606D;
+  --line: #D8DEE4;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --header-h: 64px;
+  --sidebar-w: 230px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: var(--font-body); background: var(--paper); color: var(--ink); }
+
+/* ---- Fixed header ---- */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: var(--navy);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.6rem;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
+.brand span { color: var(--accent); }
+.topbar-note { font-family: var(--font-mono); font-size: 0.75rem; color: #AEC3D6; }
+
+/* ---- Shell: pushes content below the fixed header ---- */
+.shell {
+  display: flex;
+  min-height: 100vh;
+  padding-top: var(--header-h);
+}
+
+/* ---- Sticky sidebar ---- */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: #ffffff;
+  border-right: 1px solid var(--line);
+  position: sticky;
+  top: var(--header-h);
+  align-self: flex-start;
+  height: calc(100vh - var(--header-h));
+  padding: 1.5rem 0;
+}
+.sidebar ul { list-style: none; }
+.sidebar li {
+  padding: 0.8rem 1.6rem;
+  font-size: 0.92rem;
+  color: var(--slate);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+.sidebar li:hover { background: var(--paper); color: var(--ink); }
+.sidebar li.active {
+  color: var(--navy);
+  font-weight: 600;
+  border-left: 3px solid var(--accent);
+  background: #FFF1EA;
+}
+
+/* ---- Content ---- */
+.content {
+  flex: 1;
+  padding: 2.4rem 2.6rem 4rem;
+  min-width: 0;
+}
+.content h1 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.5rem; }
+.subtitle { color: var(--slate); max-width: 60ch; margin-bottom: 2rem; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+.stat-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.2rem 1.3rem;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.stat-label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; }
+.stat-value { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--navy); }
+
+.panel {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.5rem 1.7rem;
+}
+.panel h2 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.8rem; }
+.panel p { color: var(--slate); max-width: 68ch; }
+.panel code {
+  font-family: var(--font-mono);
+  background: var(--paper);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: var(--navy);
+}
+
+@media (max-width: 720px) {
+  .shell { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--line); }
+  .sidebar ul { display: flex; overflow-x: auto; }
+  .sidebar li { border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+  .sidebar li.active { border-left: none; border-bottom: 3px solid var(--accent); }
+}

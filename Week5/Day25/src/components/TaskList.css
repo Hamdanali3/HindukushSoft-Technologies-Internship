@@ -1,0 +1,13 @@
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6) var(--space-8);
+  max-width: 840px;
+}
+
+@media (max-width: 640px) {
+  .task-list {
+    padding: var(--space-4) var(--space-4) var(--space-8);
+  }
+}

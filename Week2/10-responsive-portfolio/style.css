@@ -1,0 +1,170 @@
+/* ============================================
+   Week 2 · Task 10 — Final responsive portfolio
+   Focus: Flexbox layout + media queries end-to-end
+   ============================================ */
+
+:root {
+  --navy: #0B1E33;
+  --paper: #F4F6F8;
+  --ink: #101820;
+  --accent: #FF6B35;
+  --slate: #52606D;
+  --line: #D8DEE4;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* ---- Navbar ---- */
+.navbar { background: var(--navy); position: sticky; top: 0; z-index: 50; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem; flex-wrap: wrap;
+}
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--paper); text-decoration: none; }
+.brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 1.8rem; }
+.nav-links a { color: #D8E4EE; text-decoration: none; font-size: 0.92rem; transition: color 0.15s ease; }
+.nav-links a:hover { color: var(--accent); }
+.nav-toggle { display: none; }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 0.4rem; }
+.nav-burger span { width: 24px; height: 2px; background: var(--paper); display: block; }
+
+/* ---- Hero: flexbox split ---- */
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; gap: 3rem;
+  padding: 4rem 1.5rem 4.5rem;
+}
+.hero-text { flex: 1 1 420px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.hero-text h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 0.5rem; }
+.hero-role { font-family: var(--font-mono); color: var(--slate); font-size: 1rem; margin-bottom: 1.2rem; }
+.hero-desc { color: var(--slate); max-width: 55ch; margin-bottom: 1.8rem; }
+.hero-desc strong { color: var(--navy); }
+.hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.btn {
+  font-family: var(--font-mono); font-size: 0.85rem; text-decoration: none;
+  padding: 0.8rem 1.6rem; border-radius: 6px; transition: all 0.15s ease;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #E4531D; }
+.btn-ghost { border: 1px solid var(--navy); color: var(--navy); }
+.btn-ghost:hover { background: var(--navy); color: #fff; }
+
+.hero-media { flex: 0 0 220px; display: flex; justify-content: center; }
+.hero-media img { width: 220px; height: 220px; }
+
+/* ---- Section shell ---- */
+main > section { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 4.5rem; }
+main > section > h2 {
+  font-family: var(--font-display); font-size: 1.6rem;
+  margin-bottom: 1.6rem; padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--navy); display: inline-block;
+}
+
+.about p { max-width: 72ch; color: var(--slate); font-size: 1.02rem; }
+
+/* ---- Skills: flexbox groups + wrapping chips ---- */
+.skills-groups { display: flex; flex-wrap: wrap; gap: 2rem; }
+.skill-group { flex: 1 1 220px; }
+.skill-group h3 { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate); margin-bottom: 0.7rem; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip-row span {
+  font-family: var(--font-mono); font-size: 0.78rem;
+  background: var(--navy); color: var(--paper);
+  padding: 0.38rem 0.85rem; border-radius: 999px;
+}
+
+/* ---- Education: flexbox row of cards ---- */
+.edu-row { display: flex; flex-wrap: wrap; gap: 1.1rem; }
+.edu-card {
+  flex: 1 1 260px; background: #fff; border: 1px solid var(--line);
+  border-radius: 8px; padding: 1.3rem;
+  border-top: 3px solid var(--accent);
+}
+.edu-years { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 0.5rem; }
+.edu-card h3 { font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.35rem; }
+.edu-school { font-size: 0.88rem; color: var(--slate); }
+
+/* ---- Projects: flexbox wrapping cards ---- */
+.cards { display: flex; flex-wrap: wrap; gap: 1.3rem; }
+.proj-card {
+  flex: 1 1 300px; max-width: 350px;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  padding: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.proj-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(11,30,51,0.1); }
+.proj-tag {
+  align-self: flex-start; font-family: var(--font-mono); font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  background: #FFF1EA; color: var(--accent); padding: 0.28rem 0.7rem; border-radius: 999px;
+}
+.proj-card h3 { font-family: var(--font-display); font-size: 1.12rem; color: var(--navy); }
+.proj-card p { font-size: 0.9rem; color: var(--slate); flex-grow: 1; }
+.proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.proj-stack span { font-family: var(--font-mono); font-size: 0.7rem; background: var(--paper); border: 1px solid var(--line); padding: 0.25rem 0.6rem; border-radius: 999px; color: var(--slate); }
+
+/* ---- Contact: flexbox two-column ---- */
+.contact-wrap { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.contact-info { flex: 1 1 280px; }
+.contact-info p { color: var(--slate); margin-bottom: 1.3rem; max-width: 42ch; }
+.contact-info ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.contact-info li { display: flex; flex-direction: column; padding: 0.6rem 0; border-bottom: 1px dashed var(--line); }
+.contact-info span { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--slate); margin-bottom: 0.15rem; }
+.contact-info a { color: var(--navy); text-decoration: none; font-weight: 500; }
+.contact-info a:hover { color: var(--accent); }
+
+.contact-form { flex: 1 1 340px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1.7rem; }
+.field { margin-bottom: 1.1rem; display: flex; flex-direction: column; }
+label { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; color: var(--slate); margin-bottom: 0.35rem; }
+input, textarea { font-family: var(--font-body); font-size: 1rem; padding: 0.65rem 0.85rem; border: 1px solid var(--line); border-radius: 5px; background: var(--paper); color: var(--ink); }
+input:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,107,53,0.18); }
+textarea { min-height: 110px; resize: vertical; }
+button { font-family: var(--font-mono); text-transform: uppercase; font-size: 0.85rem; background: var(--accent); color: #fff; border: none; padding: 0.8rem 1.6rem; border-radius: 5px; cursor: pointer; }
+button:hover { background: #E4531D; }
+
+.site-footer { text-align: center; padding: 1.8rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); border-top: 1px solid var(--line); }
+
+/* ============================================
+   Media queries — responsive breakpoints
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero { flex-direction: column-reverse; text-align: center; padding-top: 3rem; }
+  .hero-actions { justify-content: center; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-media img { width: 170px; height: 170px; }
+}
+
+/* Mobile: collapse nav, stack layouts */
+@media (max-width: 680px) {
+  .nav-burger { display: flex; }
+  .nav-links {
+    flex-basis: 100%; flex-direction: column; gap: 0;
+    max-height: 0; overflow: hidden; transition: max-height 0.25s ease;
+  }
+  .nav-links a { padding: 0.8rem 0; border-top: 1px solid rgba(255,255,255,0.12); }
+  .nav-toggle:checked ~ .nav-links { max-height: 320px; }
+
+  main > section { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .contact-wrap { gap: 1.5rem; }
+}
+
+@media (max-width: 420px) {
+  .hero-actions { flex-direction: column; }
+  .btn { text-align: center; }
+}

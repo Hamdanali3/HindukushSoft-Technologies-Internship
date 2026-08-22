@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 11 — JavaScript Basics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1E33; --paper: #F4F6F8; --ink: #101820;
+      --accent: #FF6B35; --slate: #52606D; --line: #D8DEE4;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.7; }
+
+    header { background: var(--navy); color: var(--paper); padding: 3rem 1.5rem 2.4rem; text-align: center; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    header h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { font-family: var(--font-mono); color: #AEC3D6; font-size: 0.9rem; }
+
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 1.6rem; margin-bottom: 1.6rem; box-shadow: 0 1px 3px rgba(11,30,51,0.06); }
+    .card h2 { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.8rem; color: var(--navy); }
+    .card p { color: var(--slate); font-size: 0.95rem; }
+    .steps { list-style: none; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 0.6rem 0 0.6rem 2.4rem;
+      border-bottom: 1px dashed var(--line);
+      font-size: 0.95rem;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(step);
+      position: absolute; left: 0; top: 0.5rem;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--navy); color: var(--paper);
+      font-family: var(--font-mono); font-size: 0.72rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    kbd {
+      font-family: var(--font-mono); font-size: 0.82rem;
+      background: var(--paper); border: 1px solid var(--line);
+      border-bottom-width: 2px; border-radius: 4px; padding: 0.1rem 0.45rem;
+    }
+    footer { text-align: center; padding: 1.6rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">Week 3 — Day 11 · JavaScript Basics</p>
+    <h1>Variables, Data Types And console.log()</h1>
+    <p>Open your browser's dev tools console to see the output</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>How to view the output</h2>
+      <ol class="steps">
+        <li>Right‑click anywhere on this page and choose <strong>Inspect</strong>, or press <kbd>F12</kbd>.</li>
+        <li>Switch to the <strong>Console</strong> tab.</li>
+        <li>You'll see the name, age, and country logged, along with a short data‑type breakdown.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>What this task covers</h2>
+      <p>
+        This page loads <code>script.js</code>, which declares a few variables,
+        logs each one to the console individually, combines them into a single
+        sentence using a template literal, checks their data types with
+        <code>typeof</code>, and finally groups them into one object.
+      </p>
+    </div>
+  </main>
+
+  <footer>Hamdan Ali · Week 3, Day 11 — Full Stack Web Development Internship</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

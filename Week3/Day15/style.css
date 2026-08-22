@@ -1,0 +1,282 @@
+/* ============================================================
+   Week 3 · Day 15 — Calculator
+   Design direction: "The Precision Instrument"
+   ============================================================ */
+
+/* ---- Theme tokens ---- */
+/* The chassis (the instrument's body) stays a constant dark
+   graphite in both themes — real hardware doesn't reskin its
+   metal casing. Only the LCD backlight and the keycaps change,
+   the way a real device's screen and keys would under a
+   day/night setting. */
+html[data-theme="light"] {
+  --page-bg: #EAE7E0;
+  --page-text: #1C1E20;
+
+  --glass-from: #D6E2C9;
+  --glass-to: #C3D2B4;
+  --glass-text: #1E3320;
+  --glass-glow: 0 0 0 rgba(0,0,0,0);
+  --glass-scanline: rgba(30,51,32,0.05);
+
+  --key-num-bg: #F6F5F2;
+  --key-num-bg-active: #E8E6E0;
+  --key-num-text: #1F2224;
+  --key-shadow: rgba(30,32,34,0.18);
+
+  --panel-bg: #F6F5F2;
+  --panel-text: #4B5560;
+}
+
+html[data-theme="dark"] {
+  --page-bg: #101214;
+  --page-text: #ECECE9;
+
+  --glass-from: #223A28;
+  --glass-to: #15241A;
+  --glass-text: #9FE3A6;
+  --glass-glow: 0 0 22px rgba(159,227,166,0.28);
+  --glass-scanline: rgba(159,227,166,0.05);
+
+  --key-num-bg: #2C3033;
+  --key-num-bg-active: #202325;
+  --key-num-text: #ECECE9;
+  --key-shadow: rgba(0,0,0,0.55);
+
+  --panel-bg: #1B1E21;
+  --panel-text: #B7BEC4;
+}
+
+:root {
+  --chassis-1: #34393E;
+  --chassis-2: #1C1F22;
+  --chassis-edge: #484F55;
+
+  --accent: #FF6B35;
+  --accent-dark: #E4531D;
+  --fn-bg: #4B5560;
+  --fn-bg-active: #3C4550;
+  --fn-text: #F4F4F2;
+
+  --font-display: 'Space Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--page-bg);
+  color: var(--page-text);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.page { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
+
+/* ---- Header ---- */
+.page-head { text-align: center; margin-bottom: 2.2rem; }
+.eyebrow {
+  font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;
+}
+.page-head h1 { font-size: 2rem; margin: 0 0 0.4rem; letter-spacing: -0.01em; }
+.page-head .sub { color: var(--panel-text); font-size: 0.95rem; margin: 0; }
+
+/* ---- Layout: calculator + history side by side ---- */
+.calc-shell {
+  display: flex; gap: 1.6rem; align-items: flex-start;
+  justify-content: center; flex-wrap: wrap;
+}
+
+/* ================= The instrument body ================= */
+.calculator {
+  width: 320px;
+  border-radius: 22px;
+  padding: 1.1rem 1.1rem 1.3rem;
+  background:
+    repeating-linear-gradient(115deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 6px),
+    linear-gradient(160deg, var(--chassis-1), var(--chassis-2));
+  box-shadow:
+    0 24px 46px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 0 0 1px rgba(0,0,0,0.4);
+  position: relative;
+}
+.calculator::after {
+  /* faint top highlight edge, like a bevelled metal case */
+  content: "";
+  position: absolute; top: 0; left: 14px; right: 14px; height: 1px;
+  background: var(--chassis-edge); opacity: 0.6; border-radius: 999px;
+}
+
+.calc-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.2rem 0.3rem 0.7rem;
+}
+.brand-mark {
+  font-family: var(--font-display); font-size: 0.66rem; letter-spacing: 0.12em;
+  color: #8A9096; text-transform: uppercase;
+}
+
+.theme-toggle { background: none; border: none; padding: 0; cursor: pointer; }
+.theme-toggle-track {
+  display: block; width: 40px; height: 20px; border-radius: 999px;
+  background: #14161A; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  position: relative; transition: background 0.2s ease;
+}
+.theme-toggle-thumb {
+  position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+  border-radius: 50%; background: linear-gradient(160deg, #FFD8A8, var(--accent));
+  transition: transform 0.22s ease;
+}
+html[data-theme="dark"] .theme-toggle-thumb {
+  transform: translateX(20px);
+  background: linear-gradient(160deg, #9FE3A6, #4FAE5C);
+}
+
+/* ---- LCD screen (signature element) ---- */
+.screen {
+  border-radius: 12px;
+  padding: 1rem 1.1rem 0.9rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(165deg, var(--glass-from), var(--glass-to));
+  box-shadow:
+    inset 0 3px 10px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(0,0,0,0.25),
+    var(--glass-glow);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s ease;
+}
+.screen::before {
+  /* subtle scanline texture across the glass */
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    180deg, var(--glass-scanline) 0 1px, transparent 1px 3px
+  );
+  pointer-events: none;
+}
+.screen-row {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 1.1rem; margin-bottom: 0.3rem;
+}
+.memory-indicator {
+  font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
+  color: var(--glass-text); border: 1px solid currentColor; border-radius: 4px;
+  padding: 0.05rem 0.35rem; opacity: 0.75;
+}
+.expression {
+  font-family: var(--font-display); font-size: 0.82rem; color: var(--glass-text);
+  opacity: 0.7; margin-left: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.display {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.8rem, 8vw, 2.4rem);
+  color: var(--glass-text);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 12px currentColor;
+  opacity: 0.92;
+  white-space: nowrap; overflow-x: auto;
+}
+html[data-theme="light"] .display { text-shadow: none; }
+
+/* ---- Keypad ---- */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.55rem;
+}
+.key {
+  border: none; border-radius: 10px;
+  font-family: var(--font-body); font-size: 1.05rem; font-weight: 600;
+  padding: 0.85rem 0; cursor: pointer;
+  box-shadow: 0 3px 0 var(--key-shadow), 0 5px 8px rgba(0,0,0,0.25);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
+}
+.key:active,
+.key.is-pressed {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--key-shadow), 0 1px 3px rgba(0,0,0,0.25);
+}
+.key:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+
+.key--num { background: var(--key-num-bg); color: var(--key-num-text); }
+.key--fn { background: var(--fn-bg); color: var(--fn-text); font-size: 0.95rem; }
+.key--op {
+  background: var(--accent); color: #fff; font-size: 1.15rem;
+}
+.key--op:hover { background: var(--accent-dark); }
+.key--eq {
+  grid-column: span 1; background: var(--accent-dark); color: #fff;
+  font-size: 1.2rem; font-weight: 700;
+}
+
+.memory-row {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem;
+  margin-top: 0.55rem;
+}
+.key--mem {
+  background: transparent; color: var(--fn-text);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.14);
+  font-family: var(--font-display); font-size: 0.72rem; padding: 0.6rem 0;
+}
+.key--mem:active, .key--mem.is-pressed { transform: translateY(2px); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.14); }
+.key--backspace { font-size: 1rem; }
+
+/* ================= History panel ================= */
+.history-panel {
+  width: 240px;
+  background: var(--panel-bg);
+  border-radius: 14px;
+  padding: 1.2rem 1.1rem;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+  color: var(--panel-text);
+}
+.history-title {
+  font-family: var(--font-display); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.12em; margin: 0 0 0.9rem; color: var(--accent);
+}
+.history-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; max-height: 340px; overflow-y: auto; }
+.history-entry {
+  display: flex; flex-direction: column; gap: 0.1rem;
+  padding: 0.5rem 0.6rem; border-radius: 8px; cursor: pointer;
+  background: rgba(128,128,128,0.08); transition: background 0.15s ease;
+}
+.history-entry:hover, .history-entry:focus-visible { background: rgba(255,107,53,0.14); outline: none; }
+.history-expression { font-family: var(--font-display); font-size: 0.72rem; opacity: 0.75; }
+.history-result { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; }
+.history-empty { font-size: 0.82rem; opacity: 0.7; padding: 0.4rem 0.2rem; }
+.history-hint { font-size: 0.74rem; opacity: 0.65; margin: 0.9rem 0 0; }
+
+/* ================= Info card ================= */
+.info-card {
+  max-width: 620px; margin: 2.4rem auto 0;
+  background: var(--panel-bg); border-radius: 12px; padding: 1.3rem 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); color: var(--panel-text); font-size: 0.9rem;
+}
+.info-card h2 { font-size: 1rem; margin: 0 0 0.6rem; color: var(--page-text); }
+.info-card code {
+  font-family: var(--font-display); font-size: 0.82em;
+  background: rgba(128,128,128,0.14); padding: 0.05rem 0.35rem; border-radius: 4px;
+}
+
+.page-foot { text-align: center; padding-top: 2rem; font-family: var(--font-display); font-size: 0.75rem; color: var(--panel-text); }
+
+/* ================= Responsive ================= */
+@media (max-width: 620px) {
+  .calc-shell { flex-direction: column; align-items: center; }
+  .history-panel { width: 320px; }
+}
+@media (max-width: 360px) {
+  .calculator { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .key, .theme-toggle-thumb, body { transition: none; }
+}

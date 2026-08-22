@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Style Studio — Hamdan Ali</title>
+<meta name="description" content="Select DOM elements and change their text and styling live — a small design-tool built to demonstrate getElementById and querySelector.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+    <header class="page-head">
+      <p class="eyebrow">Week 4 — Day 16 · DOM Selectors</p>
+      <h1>Live Style Studio</h1>
+      <p class="sub">Edit the card on the right. Every change below is one line of JavaScript, shown live in the log.</p>
+    </header>
+
+    <main class="studio">
+
+      <!-- ===================== Control panel ===================== -->
+      <section class="panel" aria-label="Controls">
+
+        <div class="panel-group">
+          <h2 class="panel-group-title">Content</h2>
+
+          <label class="field">
+            <span class="field-label">Title</span>
+            <input type="text" id="control-title" value="Hamdan Ali" maxlength="40">
+          </label>
+
+          <label class="field">
+            <span class="field-label">Role</span>
+            <input type="text" id="control-role" value="Full-Stack Developer" maxlength="48">
+          </label>
+
+          <label class="field">
+            <span class="field-label">Bio</span>
+            <textarea id="control-bio" maxlength="140">Building clean, dependable interfaces — one component at a time.</textarea>
+          </label>
+        </div>
+
+        <div class="panel-group">
+          <h2 class="panel-group-title">Appearance</h2>
+
+          <div class="field">
+            <span class="field-label">Accent color</span>
+            <div id="swatch-row" class="swatch-row">
+              <button type="button" class="swatch is-active" data-color="#FF6B35" style="--sw:#FF6B35" aria-label="Orange"></button>
+              <button type="button" class="swatch" data-color="#2F6FED" style="--sw:#2F6FED" aria-label="Blue"></button>
+              <button type="button" class="swatch" data-color="#1E9E6B" style="--sw:#1E9E6B" aria-label="Green"></button>
+              <button type="button" class="swatch" data-color="#C23B6C" style="--sw:#C23B6C" aria-label="Pink"></button>
+              <button type="button" class="swatch" data-color="#7B5CE0" style="--sw:#7B5CE0" aria-label="Purple"></button>
+              <button type="button" class="swatch" data-color="#1C1E20" style="--sw:#1C1E20" aria-label="Charcoal"></button>
+            </div>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Font</span>
+            <select id="control-font">
+              <option value="'Plus Jakarta Sans', sans-serif" selected>Plus Jakarta Sans</option>
+              <option value="'Georgia', serif">Georgia</option>
+              <option value="'JetBrains Mono', monospace">JetBrains Mono</option>
+              <option value="'Inter', sans-serif">Inter</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Corner radius <span id="radius-value">18px</span></span>
+            <input type="range" id="control-radius" min="0" max="40" value="18">
+          </label>
+
+          <label class="field field-row">
+            <span class="field-label">Drop shadow</span>
+            <input type="checkbox" id="control-shadow" checked>
+          </label>
+
+          <label class="field field-row">
+            <span class="field-label">Dark canvas</span>
+            <input type="checkbox" id="control-dark-canvas">
+          </label>
+        </div>
+
+        <div class="panel-actions">
+          <button type="button" id="reset-btn" class="btn btn-ghost">Reset</button>
+          <button type="button" id="copy-btn" class="btn btn-primary">Copy HTML</button>
+        </div>
+      </section>
+
+      <!-- ===================== Preview canvas ===================== -->
+      <section class="canvas-wrap" id="canvas-wrap" aria-label="Live preview">
+        <div class="canvas-dots"></div>
+
+        <article id="preview-card" class="preview-card">
+          <div class="preview-avatar" id="preview-avatar">HA</div>
+          <h2 id="preview-title" class="preview-title">Hamdan Ali</h2>
+          <p class="preview-role">Full-Stack Developer</p>
+          <p class="preview-bio">Building clean, dependable interfaces — one component at a time.</p>
+        </article>
+      </section>
+
+    </main>
+
+    <!-- ===================== Selector log ===================== -->
+    <section class="log-panel" aria-label="Selector activity log">
+      <p class="log-title">Selector Log</p>
+      <ul id="log-list" class="log-list"></ul>
+    </section>
+
+    <section class="info-card">
+      <h2>How it's built</h2>
+      <p>
+        Every control is wired to one specific element, selected once
+        when the page loads and reused from then on — a mix of
+        <code>document.getElementById()</code> for elements with a
+        unique id, and <code>document.querySelector()</code> /
+        <code>document.querySelectorAll()</code> for elements picked
+        out by class or grouped by a shared selector. The log above
+        shows exactly which call ran each time you make a change.
+      </p>
+    </section>
+
+    <footer class="page-foot">Hamdan Ali · Week 4, Day 16 — Full Stack Web Development Internship</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

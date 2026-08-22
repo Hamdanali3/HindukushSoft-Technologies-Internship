@@ -1,0 +1,164 @@
+/* ============================================
+   Week 2 · Task 9 — Responsive navbar + card section
+   Focus: Flexbox
+   ============================================ */
+
+:root {
+  --navy: #0B1E33;
+  --paper: #F4F6F8;
+  --ink: #101820;
+  --accent: #FF6B35;
+  --slate: #52606D;
+  --line: #D8DEE4;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.6; }
+
+/* ---- Navbar (Flexbox) ---- */
+.navbar {
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--paper);
+  text-decoration: none;
+}
+.brand span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+}
+.nav-links a {
+  color: #D8E4EE;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: color 0.15s ease;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-toggle { display: none; }
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+.nav-burger span { width: 24px; height: 2px; background: var(--paper); display: block; }
+
+/* ---- Intro ---- */
+.intro {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2.5rem;
+  text-align: center;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+}
+.intro h1 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 0.8rem; }
+.intro p { color: var(--slate); }
+
+/* ---- Card section (Flexbox, wrapping) ---- */
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  justify-content: center;
+}
+.proj-card {
+  flex: 1 1 300px;
+  max-width: 340px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.proj-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(11,30,51,0.1);
+}
+.proj-tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #FFF1EA;
+  color: var(--accent);
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+}
+.proj-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy); }
+.proj-card p { font-size: 0.9rem; color: var(--slate); flex-grow: 1; }
+.proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.proj-stack span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  color: var(--slate);
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--slate);
+  border-top: 1px solid var(--line);
+}
+
+/* ---- Responsive: collapse navbar into a burger menu ---- */
+@media (max-width: 680px) {
+  .nav-burger { display: flex; }
+  .nav-links {
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .nav-links a {
+    padding: 0.8rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .nav-toggle:checked ~ .nav-links {
+    max-height: 300px;
+  }
+}

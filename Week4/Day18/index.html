@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevSummit '26 — Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- ============ LEFT PANEL — EVENT BRANDING + LIVE CHECKLIST ============ -->
+  <aside class="brand-panel">
+    <div class="brand-panel__inner">
+
+      <div class="brand-mark">
+        <span class="brand-mark__glyph">DS</span>
+        <span class="brand-mark__text">DEVSUMMIT&nbsp;'26</span>
+      </div>
+
+      <h1 class="brand-headline">
+        Three days.<br>
+        One stage.<br>
+        Every engineer&nbsp;who<br>
+        ships&nbsp;for&nbsp;a&nbsp;living.
+      </h1>
+
+      <dl class="event-meta">
+        <div class="event-meta__row">
+          <dt>Dates</dt>
+          <dd>August&nbsp;12–14, 2026</dd>
+        </div>
+        <div class="event-meta__row">
+          <dt>Venue</dt>
+          <dd>Lower Chitral Near Ataliq Bridge , Pakistan</dd>
+        </div>
+        <div class="event-meta__row">
+          <dt>Track</dt>
+          <dd>Full-Stack &amp; Platform Engineering</dd>
+        </div>
+      </dl>
+
+      <div class="checklist" id="checklist" aria-label="Registration progress">
+        <p class="checklist__label">Your boarding checklist</p>
+
+        <div class="checklist__item" data-check="fullName">
+          <span class="checklist__dot" aria-hidden="true"></span>
+          <span class="checklist__text">Full name</span>
+        </div>
+        <div class="checklist__item" data-check="email">
+          <span class="checklist__dot" aria-hidden="true"></span>
+          <span class="checklist__text">Work email</span>
+        </div>
+        <div class="checklist__item" data-check="phone">
+          <span class="checklist__dot" aria-hidden="true"></span>
+          <span class="checklist__text">Phone number</span>
+        </div>
+        <div class="checklist__item" data-check="organization">
+          <span class="checklist__dot" aria-hidden="true"></span>
+          <span class="checklist__text">Organization</span>
+        </div>
+        <div class="checklist__item" data-check="role">
+          <span class="checklist__dot" aria-hidden="true"></span>
+          <span class="checklist__text">Role</span>
+        </div>
+        <div class="checklist__item" data-check="password">
+          <span class="checklist__dot" aria-hidden="true"></span>
+          <span class="checklist__text">Password set</span>
+        </div>
+        <div class="checklist__item" data-check="terms">
+          <span class="checklist__dot" aria-hidden="true"></span>
+          <span class="checklist__text">Terms accepted</span>
+        </div>
+      </div>
+
+      <p class="brand-footnote">Passes are non-transferable and validated at the door against the email used here.</p>
+    </div>
+  </aside>
+
+  <!-- ticket perforation divider -->
+  <div class="perforation" aria-hidden="true"></div>
+
+  <!-- ============ RIGHT PANEL — FORM ============ -->
+  <main class="form-panel">
+
+    <!-- ---- Registration form (default view) ---- -->
+    <form class="reg-form" id="regForm" novalidate>
+
+      <div class="form-panel__head">
+        <p class="eyebrow">Attendee registration</p>
+        <h2>Reserve your seat</h2>
+        <p class="form-panel__sub">Every field below is required — we validate as you go, so there are no surprises at submit.</p>
+      </div>
+
+      <div class="field-grid">
+
+        <div class="field" data-field="fullName">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Hamdan Ali" autocomplete="name">
+          <p class="field__error" id="err-fullName" role="alert"></p>
+        </div>
+
+        <div class="field" data-field="email">
+          <label for="email">Work email</label>
+          <input type="text" id="email" name="email" placeholder="Hamdanaly651@gmail.com" autocomplete="email">
+          <p class="field__error" id="err-email" role="alert"></p>
+        </div>
+
+        <div class="field" data-field="phone">
+          <label for="phone">Phone number</label>
+          <input type="text" id="phone" name="phone" placeholder="03XX XXXXXXX" autocomplete="tel">
+          <p class="field__error" id="err-phone" role="alert"></p>
+        </div>
+
+        <div class="field" data-field="organization">
+          <label for="organization">Organization</label>
+          <input type="text" id="organization" name="organization" placeholder="Company or university" autocomplete="organization">
+          <p class="field__error" id="err-organization" role="alert"></p>
+        </div>
+
+        <div class="field field--full" data-field="role">
+          <label for="role">Which best describes you?</label>
+          <select id="role" name="role">
+            <option value="" disabled selected>Select a role</option>
+            <option value="frontend">Frontend Engineer</option>
+            <option value="backend">Backend Engineer</option>
+            <option value="fullstack">Full-Stack Engineer</option>
+            <option value="student">Student / Intern</option>
+            <option value="other">Other</option>
+          </select>
+          <p class="field__error" id="err-role" role="alert"></p>
+        </div>
+
+        <div class="field" data-field="password">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="At least 8 characters" autocomplete="new-password">
+          <p class="field__error" id="err-password" role="alert"></p>
+        </div>
+
+        <div class="field" data-field="confirmPassword">
+          <label for="confirmPassword">Confirm password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" autocomplete="new-password">
+          <p class="field__error" id="err-confirmPassword" role="alert"></p>
+        </div>
+
+        <div class="field field--full field--checkbox" data-field="terms">
+          <label class="checkbox-label" for="terms">
+            <input type="checkbox" id="terms" name="terms">
+            <span>I agree to the code of conduct and the attendee terms.</span>
+          </label>
+          <p class="field__error" id="err-terms" role="alert"></p>
+        </div>
+
+      </div>
+
+      <div class="form-panel__foot">
+        <p class="form-summary" id="formSummary" role="alert" aria-live="polite"></p>
+        <button type="submit" class="submit-btn">
+          <span>Confirm registration</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+
+    <!-- ---- Confirmation ticket (shown after successful validation) ---- -->
+    <section class="ticket-view" id="ticketView" hidden>
+      <div class="ticket">
+        <div class="ticket__top">
+          <div>
+            <p class="eyebrow">Boarding confirmed</p>
+            <h2>You're on the list.</h2>
+          </div>
+          <span class="ticket__code" id="ticketCode">DS26-000000</span>
+        </div>
+
+        <div class="ticket__body">
+          <div class="ticket__row">
+            <span>Attendee</span>
+            <strong id="ticketName">—</strong>
+          </div>
+          <div class="ticket__row">
+            <span>Email</span>
+            <strong id="ticketEmail">—</strong>
+          </div>
+          <div class="ticket__row">
+            <span>Organization</span>
+            <strong id="ticketOrg">—</strong>
+          </div>
+          <div class="ticket__row">
+            <span>Role</span>
+            <strong id="ticketRole">—</strong>
+          </div>
+          <div class="ticket__row">
+            <span>Venue</span>
+            <strong>Lower Chitral Near Ataliq Bridge , Pakistan</strong>
+          </div>
+          <div class="ticket__row">
+            <span>Dates</span>
+            <strong>August 12–14, 2026</strong>
+          </div>
+        </div>
+
+        <div class="ticket__barcode" aria-hidden="true"></div>
+      </div>
+
+      <button type="button" class="ghost-btn" id="editBtn">Edit details</button>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

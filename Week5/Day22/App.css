@@ -1,0 +1,209 @@
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 56px 32px 90px;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+  padding-bottom: 48px;
+  margin-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-faint);
+}
+
+.site-header__mark { color: var(--accent-a); display: inline-flex; }
+
+.site-header__name {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.site-header__titleblock h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.site-header__titleblock p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+}
+
+.site-header__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 26px;
+  border-radius: 14px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+}
+
+.site-header__stat-number {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(100deg, var(--accent-a), var(--accent-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.site-header__stat-label {
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+/* ============================================================
+   Roster grid
+   ============================================================ */
+.roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+/* ============================================================
+   UserCard
+   ============================================================ */
+.user-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.user-card:hover {
+  border-color: rgba(109, 94, 240, 0.4);
+  transform: translateY(-2px);
+}
+
+.user-card--featured {
+  border-color: rgba(109, 94, 240, 0.5);
+  background: linear-gradient(180deg, rgba(109, 94, 240, 0.08), var(--surface) 60%);
+}
+
+.user-card__ribbon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #C9C4FB;
+  background: var(--accent-soft);
+  border: 1px solid rgba(109, 94, 240, 0.35);
+  padding: 4px 9px;
+  border-radius: 999px;
+}
+
+.user-card__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-card__avatar {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: #0B0C10;
+}
+
+.user-card__identity h3 {
+  margin: 0 0 2px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.user-card__identity p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.user-card__bio {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  flex: 1;
+}
+
+.user-card__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  padding: 4px 9px;
+  border-radius: 999px;
+}
+
+.user-card__footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.status-dot__pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.status-dot--online .status-dot__pip { background: var(--online); box-shadow: 0 0 0 3px rgba(52, 199, 123, 0.18); }
+.status-dot--away .status-dot__pip { background: var(--away); box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.18); }
+.status-dot--offline .status-dot__pip { background: var(--offline); }
+
+@media (max-width: 640px) {
+  .page { padding: 40px 20px 60px; }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 13 — Greeting Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1E33; --paper: #F4F6F8; --ink: #101820;
+      --accent: #FF6B35; --slate: #52606D; --line: #D8DEE4; --green: #1E8E5A;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.7; }
+
+    header { background: var(--navy); color: var(--paper); padding: 3rem 1.5rem 2.4rem; text-align: center; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    header h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { font-family: var(--font-mono); color: #AEC3D6; font-size: 0.9rem; }
+
+    main { max-width: 640px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 2rem; margin-bottom: 1.6rem; box-shadow: 0 1px 3px rgba(11,30,51,0.06); }
+    .card h2 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--navy); text-align: center; }
+    .card > p.hint { color: var(--slate); font-size: 0.95rem; margin-bottom: 1.6rem; text-align: center; }
+
+    .input-row { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    input[type="text"] {
+      flex: 1 1 200px;
+      font-family: var(--font-body); font-size: 1rem;
+      padding: 0.75rem 1rem; border: 1px solid var(--line); border-radius: 6px;
+      background: var(--paper); color: var(--ink);
+    }
+    input[type="text"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,107,53,0.18); }
+
+    button {
+      font-family: var(--font-mono); text-transform: uppercase; font-size: 0.85rem;
+      letter-spacing: 0.03em; background: var(--accent); color: #fff; border: none;
+      padding: 0.85rem 1.6rem; border-radius: 6px; cursor: pointer; transition: background 0.15s ease;
+    }
+    button:hover { background: #E4531D; }
+
+    .greeting-output {
+      margin-top: 1.6rem; padding: 1.2rem 1.3rem; border-radius: 6px;
+      font-size: 1.02rem; border-left: 4px solid var(--line);
+      background: var(--paper); color: var(--slate); min-height: 1.4em;
+    }
+    .greeting-output--visible { border-left-color: var(--green); background: #EAF7EF; color: #14532D; font-weight: 500; }
+
+    .info-card { text-align: left; }
+    .info-card h2 { text-align: left; }
+    .info-card p { margin-bottom: 0; color: var(--slate); }
+    .info-card code {
+      font-family: var(--font-mono); font-size: 0.85em;
+      background: var(--paper); border: 1px solid var(--line);
+      padding: 0.1rem 0.4rem; border-radius: 4px; color: var(--navy);
+    }
+
+    footer { text-align: center; padding: 1.6rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">Week 3 — Day 13 · Functions, Parameters &amp; Return Values</p>
+    <h1>Greeting Generator</h1>
+    <p>Type a name, and a function builds the message</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Try It</h2>
+      <p class="hint">Enter a name and click "Greet Me" (or press Enter).</p>
+      <div class="input-row">
+        <input type="text" id="name-input" placeholder="e.g. Hamdan" autocomplete="off">
+        <button id="greet-btn" type="button">Greet Me</button>
+      </div>
+      <div id="greeting-output" class="greeting-output">Your greeting will appear here.</div>
+    </div>
+
+    <div class="card info-card">
+      <h2>What this does</h2>
+      <p>
+        Clicking the button calls <code>createGreeting(name)</code>, a function that
+        takes the name you typed as a parameter and <em>returns</em> a complete
+        greeting sentence — it doesn't touch the page directly. A separate function,
+        <code>displayGreeting()</code>, takes that returned string and writes it
+        into the page.
+      </p>
+    </div>
+  </main>
+
+  <footer>Hamdan Ali · Week 3, Day 13 — Full Stack Web Development Internship</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

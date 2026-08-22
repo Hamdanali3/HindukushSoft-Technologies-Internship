@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Layout — Hamdan Ali</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">Karigaar<span>.admin</span></div>
+    <p class="topbar-note">Week 2 — Task 8 · Header / Sidebar / Content layout (display &amp; positioning)</p>
+  </header>
+
+  <div class="shell">
+    <nav class="sidebar" aria-label="Dashboard navigation">
+      <ul>
+        <li class="active">Overview</li>
+        <li>Bookings</li>
+        <li>Workers</li>
+        <li>Payments</li>
+        <li>Verification</li>
+        <li>Settings</li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <h1>Overview</h1>
+      <p class="subtitle">A snapshot layout demonstrating a fixed header, a sticky sidebar, and a scrollable content region.</p>
+
+      <section class="stat-grid">
+        <div class="stat-card">
+          <p class="stat-label">Active Bookings</p>
+          <p class="stat-value">128</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Verified Workers</p>
+          <p class="stat-value">64</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Escrow Held</p>
+          <p class="stat-value">₨ 214,500</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Open Tickets</p>
+          <p class="stat-value">7</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Layout Notes</h2>
+        <p>
+          The header uses <code>position: fixed</code> to stay pinned to the top of
+          the viewport. The sidebar uses <code>position: sticky</code> so it tracks
+          scrolling within the content shell without leaving the layout flow. The
+          content column uses <code>display: flex</code> at the shell level and
+          <code>display: grid</code> for the stat cards, keeping everything aligned
+          without relying on floats.
+        </p>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>

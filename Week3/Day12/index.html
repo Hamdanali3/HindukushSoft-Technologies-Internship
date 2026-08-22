@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 12 — Voting Eligibility Checker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1E33; --paper: #F4F6F8; --ink: #101820;
+      --accent: #FF6B35; --slate: #52606D; --line: #D8DEE4;
+      --green: #1E8E5A; --red: #D93F3F; --amber: #C98A11;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.7; }
+
+    header { background: var(--navy); color: var(--paper); padding: 3rem 1.5rem 2.4rem; text-align: center; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    header h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { font-family: var(--font-mono); color: #AEC3D6; font-size: 0.9rem; }
+
+    main { max-width: 640px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 2rem; margin-bottom: 1.6rem; box-shadow: 0 1px 3px rgba(11,30,51,0.06); text-align: center; }
+    .card h2 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--navy); }
+    .card p { color: var(--slate); font-size: 0.95rem; margin-bottom: 1.6rem; }
+
+    button {
+      font-family: var(--font-mono); text-transform: uppercase; font-size: 0.85rem;
+      letter-spacing: 0.03em; background: var(--accent); color: #fff; border: none;
+      padding: 0.85rem 1.8rem; border-radius: 6px; cursor: pointer; transition: background 0.15s ease;
+    }
+    button:hover { background: #E4531D; }
+
+    .result {
+      margin-top: 1.6rem; padding: 1rem 1.2rem; border-radius: 6px;
+      font-size: 0.95rem; text-align: left; border-left: 4px solid var(--line);
+      background: var(--paper); color: var(--slate); display: none;
+    }
+    .result:not(:empty) { display: block; }
+    .result--success { border-left-color: var(--green); background: #EAF7EF; color: #14532D; }
+    .result--warning { border-left-color: var(--amber); background: #FDF3E1; color: #7A5200; }
+    .result--error   { border-left-color: var(--red);   background: #FBEAEA; color: #7A1F1F; }
+    .result--neutral { border-left-color: var(--slate); }
+
+    .info-card { padding: 1.6rem 1.8rem; text-align: left; }
+    .info-card h2 { text-align: left; }
+    .info-card p { margin-bottom: 0; }
+    .info-card code {
+      font-family: var(--font-mono); font-size: 0.85em;
+      background: var(--paper); border: 1px solid var(--line);
+      padding: 0.1rem 0.4rem; border-radius: 4px; color: var(--navy);
+    }
+
+    footer { text-align: center; padding: 1.6rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">Week 3 — Day 12 · Conditionals &amp; Comparison Operators</p>
+    <h1>Voting Eligibility Checker</h1>
+    <p>Prompts for age, then checks it against the voting age</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Check Your Eligibility</h2>
+      <p>Click the button, enter your age in the popup, and the result appears below.</p>
+      <button id="check-btn" type="button">Check My Age</button>
+      <div id="result" class="result" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="card info-card">
+      <h2>What this does</h2>
+      <p>
+        Clicking the button runs <code>prompt()</code> to ask for your age, converts
+        the answer to a number, and runs it through a few checks: empty input,
+        invalid numbers, unrealistic values, and finally the real comparison —
+        <code>age &gt;= 18</code> — using an <code>if / else</code> statement.
+      </p>
+    </div>
+  </main>
+
+  <footer>Hamdan Ali · Week 3, Day 12 — Full Stack Web Development Internship</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

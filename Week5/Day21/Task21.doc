@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Day 21: React App with JSX Heading</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 40px; color: #333; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 30px; }
+        h3 { color: #16a085; }
+        p { margin-bottom: 15px; }
+        .intern-notes { background-color: #f8f9fa; border-left: 4px solid #f39c12; padding: 15px; margin: 20px 0; font-style: italic; }
+        code { background-color: #f1f2f6; padding: 2px 5px; border-radius: 4px; font-family: Consolas, monospace; }
+        ul { margin-bottom: 20px; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Day 21: React App with JSX Heading</h1>
+    <p><strong>Author:</strong> Alex (Frontend Intern)</p>
+    <p><strong>Date:</strong> August 13</p>
+
+    <h2>Introduction & Approach</h2>
+    <p>Hi everyone! Today I built a beautiful Developer Portfolio Landing Page to really show off what I've learned about JSX and React. I wanted this to feel premium, so I went with a dark theme, glassmorphism effects, and some really cool CSS animations like a floating particle background and a typewriter effect for the subtitle.</p>
+    
+    <div class="intern-notes">
+        "JSX is just fantastic. It looks like HTML, but it lets me use the full power of JavaScript right inside my markup. I can map over arrays to generate UI, use variables for dynamic content, and conditionally render things effortlessly."
+    </div>
+
+    <h2>Setup & Tools Used</h2>
+    <p>Instead of relying on boilerplate creators like Create React App or `npm create vite`, I built the entire project structure from scratch to understand how the pieces fit together:</p>
+    <ul>
+        <li><strong>package.json</strong>: Set up my dependencies (React, ReactDOM) and dev dependencies (Vite, Vite React plugin).</li>
+        <li><strong>vite.config.js</strong>: Kept it simple with the React plugin enabled.</li>
+        <li><strong>index.html</strong>: Loaded in the Google Fonts (Inter and Space Grotesk) and set up the root div.</li>
+        <li><strong>src/main.jsx</strong>: The entry point where I mount the React App to the DOM.</li>
+    </ul>
+
+    <h2>Code Walkthrough</h2>
+    
+    <h3>The App Component (JSX in Action)</h3>
+    <p>In <code>App.jsx</code>, I used several powerful JSX features:</p>
+    <ul>
+        <li><strong>State Hooks:</strong> Used <code>useState</code> and <code>useEffect</code> to track scroll position and add a 'scrolled' class to the navbar for a cool glass effect when scrolling down.</li>
+        <li><strong>Array Mapping:</strong> Instead of hardcoding the navigation links, stats, tech stack, and social links, I created arrays of objects and used <code>.map()</code> to render them. This makes the code so much cleaner and easier to update! For instance, adding a new skill to the tech stack is just adding one line to the array.</li>
+        <li><strong>Dynamic Styling:</strong> I used inline styles in JSX to set dynamic animation delays for the stats cards (<code>style={{ animationDelay: `${index * 0.1}s` }}</code>) and custom background colors for the tech stack dots.</li>
+    </ul>
+
+    <h3>CSS & Styling</h3>
+    <p>I stuck to vanilla CSS because I wanted total control over the design system:</p>
+    <ul>
+        <li><strong>CSS Variables:</strong> Defined a strict color palette in <code>:root</code> to keep everything consistent.</li>
+        <li><strong>Glassmorphism:</strong> Used <code>backdrop-filter: blur(12px)</code> paired with semi-transparent backgrounds to create those sleek, modern cards.</li>
+        <li><strong>Animations:</strong> Created a custom CSS keyframe animation for the floating particles in the background. I generated 20 particles using a quick array map in JSX and gave each a unique class to randomize their position and speed via CSS.</li>
+    </ul>
+
+    <h2>Key Learnings</h2>
+    <p>Setting up the Vite environment manually taught me a lot about modern build tools. It's actually not that scary once you see the individual files. I also solidified my understanding of how JSX compiles down to JavaScript. It's so satisfying to write logic and UI in the same file without context switching.</p>
+
+    <h2>Challenges & Solutions</h2>
+    <p>One tricky part was getting the typewriter animation to work correctly while keeping the text responsive. I had to play around with the <code>ch</code> units and <code>steps()</code> in the CSS animation, but eventually found a setup that looks smooth and professional.</p>
+
+    <h2>Conclusion</h2>
+    <p>I'm really proud of how this landing page turned out. It feels performant, looks great, and the codebase is highly maintainable thanks to React and JSX. I can't wait to tackle tomorrow's challenge!</p>
+</body>
+</html>

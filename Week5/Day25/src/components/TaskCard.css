@@ -1,0 +1,222 @@
+.task-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-6);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out);
+  overflow: hidden;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Signature detail: a ring-bound index card edge */
+.task-card__holes {
+  position: absolute;
+  left: var(--space-2);
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.task-card__holes span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-paper);
+  border: 1px solid var(--color-border-strong);
+}
+
+.task-card__check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-strong);
+  display: grid;
+  place-items: center;
+  color: var(--color-paper);
+  margin-top: 2px;
+  transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+.task-card__check:hover {
+  border-color: var(--color-primary);
+}
+
+.is-completed .task-card__check {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.task-card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.task-card__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.task-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.is-completed .task-card__title {
+  text-decoration: line-through;
+  color: var(--color-ink-faint);
+}
+
+.task-card__priority {
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.task-card__priority--urgent {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
+.task-card__priority--high {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+}
+.task-card__priority--medium {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+.task-card__priority--low {
+  background: var(--color-paper-alt);
+  color: var(--color-ink-faint);
+}
+
+.task-card__notes {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+
+.is-completed .task-card__notes {
+  color: var(--color-ink-faint);
+}
+
+.task-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-ink-faint);
+}
+
+.task-card__due {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+}
+
+.task-card__due.is-today {
+  color: var(--color-accent-dark);
+  font-weight: 600;
+}
+
+.task-card__due.is-overdue {
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+.task-card__category {
+  padding: 1px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.task-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.task-card:hover .task-card__actions,
+.task-card:focus-within .task-card__actions {
+  opacity: 1;
+}
+
+.task-card__actions button {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-faint);
+}
+
+.task-card__actions button:hover {
+  background: var(--color-paper-alt);
+  color: var(--color-ink);
+}
+
+.task-card__delete:hover {
+  color: var(--color-danger);
+}
+
+/* Signature detail: a rotated "past due" stamp, like a library due-date slip */
+.task-card__stamp {
+  position: absolute;
+  top: 8px;
+  right: -26px;
+  width: 110px;
+  text-align: center;
+  transform: rotate(8deg);
+  background: transparent;
+  border-top: 2px solid var(--color-danger);
+  border-bottom: 2px solid var(--color-danger);
+  color: var(--color-danger);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 0;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .task-card__actions {
+    opacity: 1;
+    flex-direction: row;
+  }
+  .task-card__stamp {
+    display: none;
+  }
+}
